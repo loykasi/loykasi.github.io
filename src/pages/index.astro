@@ -1,10 +1,121 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { getEntry, render } from "astro:content";
+import { profileConfig, projectConfig } from "../config";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const config = profileConfig;
+
+const aboutPost = await getEntry("info", "about");
+
+if (!aboutPost) {
+    throw new Error("Content not found.");
+}
+
+const { Content: AboutContent } = await render(aboutPost);
+
 ---
 
 <Layout>
-	
+    <div id="about" class="main-cover flex items-center text-shadow-md text-shadow-black/40">
+        <div class="w-full">
+            <div class="md:flex md:items-center mb-6">
+                <h1 class="hidden md:block text-4xl lg:text-6xl font-bold text-white mr-20 relative
+                after:absolute after:block after:w-4 after:h-4 after:rounded-xl
+                after:bg-white/60 after:-right-12 after:top-4 lg:after:top-6
+                ">
+                    Hi, I'm Chung Nghia
+                </h1>
+                <h1 class="md:hidden block w-full text-3xl lg:text-6xl font-bold text-white mr-20 mb-6">
+                    Hi, I'm Chung Nghia
+                </h1>
+                <div class="flex gap-2 relative">
+                    {config.links.length > 1 && config.links.map(item =>
+                        <a aria-label={item.name} href={item.url} target="_blank" class="block p-2 bg-blue-200/40 text-slate-200 rounded-lg hover:bg-blue-300/50 active:scale-95 transition-all">
+                            <Icon name={item.icon} class="text-2xl" />
+                        </a>
+                    )}
+                </div>
+            </div>
+            <div class="text-white/85 md-content">
+                <AboutContent />
+            </div>
+            
+            <div class="rounded-2xl w-20 h-2 bg-blue-400 mx-auto my-5 md:mt-12 md:mb-12"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-4 text-lg md:text-xl">
+                <div class="col-span-1 text-white/85">
+                    <p>I also run a Youtube channel and website about Marble Race.</p>
+                    <div>
+                        <a href="#" class="inline-flex w-fit text-base items-center mt-4 px-4 py-2 bg-blue-200/40 rounded-xl hover:bg-blue-300/50 active:scale-95 transition-all">
+                            <Icon name="fa6-brands:youtube" />
+                            <div class="ms-2 font-medium text-blue-100">Lunnidoo</div>
+                        </a>
+                        <a href="#" class="inline-flex w-fit text-base items-center mt-4 px-4 py-2 bg-blue-200/40 rounded-xl hover:bg-blue-300/50 active:scale-95 transition-all">
+                            <Icon name="fa6-regular:pen-to-square" />
+                            <div class="ms-2 font-medium text-blue-100">Blog</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-span-1 text-white/85">
+                    <p>I make game too, just some simple game make with Unity.</p>
+                    <a href="#" class="inline-flex w-fit text-base items-center mt-4 px-4 py-2 bg-blue-200/40 rounded-xl hover:bg-blue-300/50 active:scale-95 transition-all">
+                        <Icon name="fa6-brands:itch-io" />
+                        <div class="ms-2 font-medium text-blue-100">Loykas</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="bg-(--card-bg) rounded-2xl px-8 py-6 mt-12">
+        <h1 class="font-bold text-2xl mb-3 ps-4 border-s-4 border-blue-500 text-black/90 dark:text-white/90">My Skills</h1>
+        {config.skills.length > 1 && config.skills.map(skill => 
+            <div class="mt-5 flex items-center">
+                <h2 class="me-5 font-bold text-xl text-black/70 dark:text-white/70">{ skill.name }</h2>
+                <ul class="flex gap-4">
+                {skill.technologies.map(value => 
+                    <li>
+                        <div class="px-4 py-2 text-sm font-bold bg-blue-100 text-blue-500 rounded-xl dark:bg-blue-300 dark:text-blue-600">
+                            { value }
+                        </div>
+                    </li>
+                )}
+                </ul>
+            </div>
+        )}
+    </div> -->
+    <div id="projects" class="bg-(--card-bg) rounded-2xl px-8 py-6 mt-12">
+        <h1 class="w-full text-2xl mb-8 font-bold ps-4 border-s-4 border-blue-500 text-black/90 dark:text-white/90">RECENT PROJECTS</h1>
+        
+        <ol class="relative border-s-2 border-gray-400 dark:border-gray-700">                  
+            <li class="mb-6 ms-8">
+                <div class="absolute w-6 h-6 bg-white rounded-full -start-3 border-4 border-blue-400 ring-6 ring-white dark:bg-(--card-bg) dark:ring-(--card-bg)"></div>
+                <h2 class="h-6 mb-1 text-2xl font-bold leading-none text-gray-900 dark:text-white">2025</h2>
+            </li>
+            {projectConfig.projects.map(project => 
+            <li class="mb-3 ms-4 p-4 rounded-lg">
+                <div class="absolute w-2 h-2 bg-gray-500 rounded-full mt-3.5 -start-1 border border-white dark:border-gray-900 dark:bg-gray-700 ring-4 ring-white dark:ring-(--card-bg)"></div>
+                <div class="mt-1.5 mb-3">
+                {project.techStack.map(tech =>
+                    <span class="bg-blue-100 text-blue-800 text-base font-medium me-2 px-2.5 py-1 rounded-lg">{ tech }</span>
+                )}
+                </div>
+                <div class="mt-1.5 mb-3 text-lg font-bold text-gray-900 dark:text-white">
+                    { project.name }
+                </div>
+                <div class="mt-1.5 mb-3 text-base font-bold text-gray-900 dark:text-white">
+                {project.links.map(link =>
+                    <a href={link.url} class="me-2 text-blue-400 border-b border-dashed">{ link.name }</a>
+                )}
+                </div>
+                <div class="mb-3 text-base font-normal text-gray-500 dark:text-gray-400">{ project.description }</div>
+                {/* <div class="flex gap-x-4 overflow-auto">
+                    <div class="bg-gray-700 aspect-video w-[calc(50%-0.5rem)] shrink-0"></div>
+                    <div class="bg-gray-700 aspect-video w-[calc(50%-0.5rem)] shrink-0"></div>
+                    <div class="bg-gray-700 aspect-video w-[calc(50%-0.5rem)] shrink-0"></div>
+                </div> */}
+            </li>
+            )}
+        </ol>
+    </div>
 </Layout>

@@ -1,1 +1,20 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-display: "Roboto", "sans-serif";
+}
+
+.md-content {
+    h1 {
+        @apply font-bold text-3xl mb-6;
+    }
+
+    p {
+        @apply block text-lg md:text-xl leading-7 py-1
+    }
+}
+
+.main-cover {
+    @apply min-h-[750px] h-dvh;
+}
