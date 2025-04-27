@@ -18,10 +18,12 @@ import { Icon } from "astro-icon/components";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Chung Nghia's Portfolio</title>
+		<script is:inline>
+			let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+			document.documentElement.classList.toggle("dark", isDarkTheme);
+		</script>
 		<script>
 			let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-			document.documentElement.classList.toggle("dark", isDarkTheme);
 
 			const themeToggle = document.getElementById("theme-toggle") as HTMLInputElement;
 			if (themeToggle) {
@@ -76,10 +78,7 @@ import { Icon } from "astro-icon/components";
 <script>
 import "overlayscrollbars/overlayscrollbars.css"
 import { 
-  OverlayScrollbars, 
-  ScrollbarsHidingPlugin, 
-  SizeObserverPlugin, 
-  ClickScrollPlugin 
+  OverlayScrollbars
 } from 'overlayscrollbars';
 import PhotoSwipeLightbox  from "photoswipe/lightbox";
 import "photoswipe/style.css"
