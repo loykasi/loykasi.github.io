@@ -18,3 +18,24 @@
 .main-cover {
     @apply min-h-[750px] h-dvh;
 }
+
+.navbar-mini {
+    @apply opacity-0 -translate-y-16
+}
+
+@supports (animation-range: exit) {
+    @media (prefers-reduced-motion: no-preference) {
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(5vh);
+            }
+        }
+        
+        .animation-appear {
+            animation: appear both ease-in-out;
+            animation-timeline: view();
+            animation-range: entry 0;
+        }
+    }
+}
