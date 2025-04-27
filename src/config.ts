@@ -68,6 +68,7 @@ export const projectConfig: ProjectConfig = {
 					],
 					description: "A website where I post blog article and upload my Algodoo scenes.",
 					imgs: [
+						"/src/assets/images/Capture.png",
 						"/src/assets/images/Capture.png"
 					]
 				},
@@ -84,7 +85,10 @@ export const projectConfig: ProjectConfig = {
 							url: "#"
 						},
 					],
-					description: "A website where I post blog article and upload my Algodoo scenes."
+					description: "A website where I post blog article and upload my Algodoo scenes.",
+					imgs: [
+						"/src/assets/images/Capture.png"
+					]
 				}
 			]
 		}

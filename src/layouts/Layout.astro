@@ -118,7 +118,8 @@ function setup() {
 
 function initPhotoSwipe() {
 	const lightbox = new PhotoSwipeLightbox({
-		gallery: ".project-photo",
+		gallery: ".project-photos",
+		children: 'img',
 		pswpModule: () => import("photoswipe"),
 		wheelToZoom: true,
 		padding: { top: 30, bottom: 30, left: 30, right: 30 },
@@ -134,7 +135,7 @@ function initPhotoSwipe() {
 		}
 
 		return itemData
-	})
+	});
 	lightbox.init();
 }
 

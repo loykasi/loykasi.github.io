@@ -114,11 +114,11 @@ const { Content: AboutContent } = await render(aboutPost);
                     </div>
                     <div class="mb-3 text-base font-normal text-gray-500 dark:text-gray-400">{ project.description }</div>
                     {project.imgs && project.imgs.length > 0 &&
-                        <div class="flex gap-x-4 overflow-auto">
+                        <div class="project-photos flex gap-x-4 overflow-auto">
                         {project.imgs.map(img =>
                             <ImageWrapper
                                 src={img}
-                                class:list={["project-photo aspect-video object-cover w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]}
+                                class:list={["aspect-video object-cover w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]}
                             />
                         )}
                         </div>
