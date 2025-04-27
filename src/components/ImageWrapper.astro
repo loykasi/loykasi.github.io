@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+   src: string;
+   alt?: string;
+   class?: string;
+}
+
+const { src, alt } = Astro.props;
+const files = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+
+const className = Astro.props.class;
+---
+
+<Image src={files[src]()} alt={alt || ""} class:list={className} />
