@@ -23,11 +23,15 @@ export type ProjectLink = {
 }
 
 export type ProjectConfig = {
-    projects: {
-        name: string,
-        techStack: string[],
-        links: ProjectLink[],
-        description: string,
-    }[];
+    groups: {
+        year: number,
+        projects: {
+            name: string,
+            techStack: string[],
+            links: ProjectLink[],
+            description: string,
+            imgs?: string[]
+        }[];
+    }[],
 };
 

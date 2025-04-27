@@ -49,36 +49,44 @@ export const navbarConfig: NavbarConfig = {
 };
 
 export const projectConfig: ProjectConfig = {
-    projects: [
-        {
-            name: "Lunnidoo Blog Website",
-            techStack: ["Nuxt", "Express"],
-            links: [
-                {
-                    name: "Website",
-                    url: "#"
-                },
-                {
-                    name: "Repository",
-                    url: "#"
-                },
-            ],
-            description: "A website where I post blog article and upload my Algodoo scenes."
-        },
-        {
-            name: "Lunnidoo Blog Website",
-            techStack: ["Nuxt", "Express"],
-            links: [
-                {
-                    name: "Website",
-                    url: "#"
-                },
-                {
-                    name: "Repository",
-                    url: "#"
-                },
-            ],
-            description: "A website where I post blog article and upload my Algodoo scenes."
-        }
-    ]
+	groups: [
+		{
+			year: 2025,
+			projects: [
+				{
+					name: "Lunnidoo Blog Website",
+					techStack: ["Nuxt", "Express"],
+					links: [
+						{
+							name: "Website",
+							url: "#"
+						},
+						{
+							name: "Repository",
+							url: "#"
+						},
+					],
+					description: "A website where I post blog article and upload my Algodoo scenes.",
+					imgs: [
+						"/src/assets/images/Capture.png"
+					]
+				},
+				{
+					name: "Lunnidoo Blog Website",
+					techStack: ["Nuxt", "Express"],
+					links: [
+						{
+							name: "Website",
+							url: "#"
+						},
+						{
+							name: "Repository",
+							url: "#"
+						},
+					],
+					description: "A website where I post blog article and upload my Algodoo scenes."
+				}
+			]
+		}
+	]
 }
