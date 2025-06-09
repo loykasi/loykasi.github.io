@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import "../styles/theme.css";
-import "../styles/scrollbar.css";
 import '@fontsource-variable/roboto';
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
@@ -22,53 +21,14 @@ import { Icon } from "astro-icon/components";
 			let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
 			document.documentElement.classList.toggle("dark", isDarkTheme);
 		</script>
-		<script>
-			let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-			const themeToggle = document.getElementById("theme-toggle") as HTMLInputElement;
-			if (themeToggle) {
-				themeToggle.checked = isDarkTheme;
-				themeToggle.addEventListener("change", (e) => toggleTheme());
-			}
-
-			async function toggleTheme() {
-				if (typeof localStorage !== "undefined" && typeof document !== "undefined") {
-					isDarkTheme = !isDarkTheme;
-
-					const theme = isDarkTheme ? 'dark' : 'light';
-					localStorage.setItem('theme', theme);
-
-					document.documentElement.classList.toggle('dark', isDarkTheme);
-				}
-			}
-		</script>
 	</head>
-	<body class="font-display bg-(--page-bg)" data-overlayscrollbars-initialize>
-		<div class="absolute -z-10 main-cover w-full">
-			<!-- <Image
-				src={Background}
-				alt="background"
-				class:list={["object-cover object-bottom size-full"]}
-				position="center"
-			></Image> -->
-			<ImageWrapper
-				src="/src/assets/images/bg.jpg"
-				alt="background"
-				class:list={["object-cover object-bottom size-full"]}
-			/>
-		</div>
-		<div class="absolute -z-5 main-cover w-full bg-black/20 backdrop-blur-xs"></div>
-		<div class="absolute z-10 pointer-events-none main-cover w-full">
-			<a href="#" class="pointer-events-auto absolute right-6 bottom-6 text-white text-sm px-4 py-2 bg-white/15 rounded-full group hover:pr-10 active:bg-white/20 transition-all">
-				<div>NEO TOKYO NOIR 01</div>
-				<Icon name="fa6-regular:share-from-square" class="absolute right-4 top-2.5 ms-2 opacity-0 group-hover:opacity-100 transition-all" />
-			</a>
-		</div>
-		<div class="relative h-dvh pointer-events-none z-10 sm:w-[90%] sm:max-w-5xl mx-auto">
+	<body class="font-display bg-(--page-bg)">
+		<div id="particles-star" class="absolute -z-10 main-cover w-full bg-(--header-bg) pointer-events-none"></div>
+		<div class="fixed top-0 left-0 right-0 bottom-0 pointer-events-none z-10 sm:w-[90%] sm:max-w-5xl mx-auto">
 			<Navbar />
 		</div>
 		<div class="absolute top-0 w-full">
-			<div class="w-[90%] sm:max-w-5xl mx-auto">
+			<div class="w-full sm:w-[90%] sm:max-w-5xl mx-auto">
 				<slot />
 				<Footer />
 			</div>
@@ -76,37 +36,21 @@ import { Icon } from "astro-icon/components";
 	</body>
 </html>
 <script>
-import "overlayscrollbars/overlayscrollbars.css"
-import { 
-  OverlayScrollbars
-} from 'overlayscrollbars';
-import PhotoSwipeLightbox  from "photoswipe/lightbox";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css"
-
-function initOverlayScrollbar() {
-	const bodyElement = document.querySelector('body');
-	if (!bodyElement) return;
-	const instance = OverlayScrollbars(
-		{
-			target: bodyElement,
-			cancel: {
-				nativeScrollbarsOverlaid: true,
-			}
-		}, {
-		scrollbars: {
-			theme: 'scrollbar-base scrollbar-auto px-2',
-			autoHide: 'move',
-			autoHideDelay: 500,
-			autoHideSuspend: false,
-		},
-	});
-}
+import { tsParticles } from "@tsparticles/engine";
+import { loadStarsPreset } from "@tsparticles/preset-stars";
 
 function setup() {
 	const navbar = document.querySelector("#main-navbar");
+	let lastScroll = 0;
 	addEventListener("scroll", (e) => {
 		if (navbar) {
-			if (document.documentElement.scrollTop > 120) {
+			const scroll = document.documentElement.scrollTop;
+			const isScrollDown = scroll - lastScroll > 0;
+			lastScroll = scroll;
+
+			if (isScrollDown) {
 				navbar.classList.add("navbar-mini");
 			} else {
 				navbar.classList.remove("navbar-mini");
@@ -138,7 +82,77 @@ function initPhotoSwipe() {
 	lightbox.init();
 }
 
-initOverlayScrollbar();
+function initThemeToggle() {
+	let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+	const themeToggle = document.getElementById("theme-toggle") as HTMLInputElement;
+	if (themeToggle) {
+		themeToggle.checked = isDarkTheme;
+		themeToggle.addEventListener("change", (e) => toggleTheme());
+		themeToggle.addEventListener("change", (e) => refreshParticle());
+	}
+
+	async function toggleTheme() {
+		if (typeof localStorage !== "undefined" && typeof document !== "undefined") {
+			isDarkTheme = !isDarkTheme;
+
+			const theme = isDarkTheme ? 'dark' : 'light';
+			localStorage.setItem('theme', theme);
+
+			document.documentElement.classList.toggle('dark', isDarkTheme);
+		}
+	}
+
+	async function refreshParticle() {
+		initStarBackground();
+	}
+}
+
+async function initStarBackground() {
+	await loadStarsPreset(tsParticles);
+
+	let style = window.getComputedStyle(document.body);
+	let bgColor = style.getPropertyValue("--header-bg");
+	let starColor = style.getPropertyValue("--header-star");
+
+	await tsParticles.load({
+		id: "particles-star",
+		options: {
+			background: {
+				color: bgColor
+			},
+			fullScreen: {
+				enable: false
+			},
+			particles: {
+				number: {
+					value: 200,
+				},
+				size: {
+					value: 3,
+				},
+				color: {
+					value: starColor
+				},
+				opacity: {
+					value: {
+						min: 0,
+						max: 0.4
+					},
+					animation: {
+						speed: 0.5,
+						startValue: "min",
+						sync: false
+					}
+				},
+			},
+		preset: "stars",
+		},
+	});
+}
+
 setup();
 initPhotoSwipe();
+initThemeToggle();
+initStarBackground();
 </script>

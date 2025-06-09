@@ -30,7 +30,7 @@ export const profileConfig: ProfileConfig = {
 		},
 		{
 			name: "Programming Languages",
-			technologies: ["JavaScrip", "C#", "Python"],
+			technologies: ["JavaScript", "C#", "Python", "C#", "JavaScript", "Python"],
 		},
 	],
 };
@@ -40,6 +40,10 @@ export const navbarConfig: NavbarConfig = {
 		{
 			name: "About",
 			url: "#about",
+		},
+		{
+			name: "Skills",
+			url: "#skills",
 		},
 		{
 			name: "Projects",
@@ -75,20 +79,9 @@ export const projectConfig: ProjectConfig = {
 				{
 					name: "Lunnidoo Blog Website",
 					techStack: ["Nuxt", "Express"],
-					links: [
-						{
-							name: "Website",
-							url: "#"
-						},
-						{
-							name: "Repository",
-							url: "#"
-						},
-					],
+					links: [],
 					description: "A website where I post blog article and upload my Algodoo scenes.",
-					imgs: [
-						"/src/assets/images/Capture.png"
-					]
+					imgs: []
 				}
 			]
 		}
