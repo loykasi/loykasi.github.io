@@ -12,9 +12,10 @@
     "@fontsource-variable/roboto": "^5.2.5",
     "@iconify-json/fa6-brands": "^1.2.5",
     "@tailwindcss/vite": "^4.1.4",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/preset-stars": "^3.2.0",
     "astro": "^5.5.5",
     "astro-icon": "^1.1.5",
-    "overlayscrollbars": "^2.11.1",
     "photoswipe": "^5.4.4",
     "tailwindcss": "^4.1.4"
   },
