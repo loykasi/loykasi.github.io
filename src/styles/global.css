@@ -23,19 +23,15 @@
     @apply opacity-0 -translate-y-16
 }
 
-/* @supports (animation-range: exit) {
-    @media (prefers-reduced-motion: no-preference) {
-        @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(5vh);
-            }
-        }
-        
-        .animation-appear {
-            animation: appear both ease-in-out;
-            animation-timeline: view();
-            animation-range: entry 0;
-        }
-    }
+[data-color-scheme="dark"] {
+    color-scheme: dark;
+}
+
+[data-color-scheme="light"] {
+    color-scheme: light;
+}
+
+/* img {
+  min-width: 1px;
+  min-height: 1px;
 } */

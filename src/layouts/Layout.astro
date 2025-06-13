@@ -4,13 +4,11 @@ import "../styles/theme.css";
 import '@fontsource-variable/roboto';
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import ImageWrapper from "../components/ImageWrapper.astro";
-import { Icon } from "astro-icon/components";
 
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth" data-overlayscrollbars-initialize>
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -20,6 +18,10 @@ import { Icon } from "astro-icon/components";
 		<script is:inline>
 			let isDarkTheme = localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
 			document.documentElement.classList.toggle("dark", isDarkTheme);
+			document.documentElement.setAttribute(
+				"data-color-scheme",
+				isDarkTheme ? "dark" : "light"
+			);
 		</script>
 	</head>
 	<body class="font-display bg-(--page-bg)">
@@ -66,6 +68,9 @@ function initPhotoSwipe() {
 		pswpModule: () => import("photoswipe"),
 		wheelToZoom: true,
 		padding: { top: 30, bottom: 30, left: 30, right: 30 },
+		showHideAnimationType: 'fade',
+		showAnimationDuration: 100,
+		hideAnimationDuration: 100
 	});
 	lightbox.addFilter("domItemData", (itemData, element) => {
 		if (element instanceof HTMLImageElement) {
@@ -100,6 +105,10 @@ function initThemeToggle() {
 			localStorage.setItem('theme', theme);
 
 			document.documentElement.classList.toggle('dark', isDarkTheme);
+			document.documentElement.setAttribute(
+				"data-color-scheme",
+				isDarkTheme ? "dark" : "light"
+			);
 		}
 	}
 

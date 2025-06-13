@@ -29,9 +29,6 @@ importers:
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
-      overlayscrollbars:
-        specifier: ^2.11.1
-        version: 2.11.1
       photoswipe:
         specifier: ^5.4.4
         version: 5.4.4
@@ -1465,9 +1462,6 @@ packages:
 
   oniguruma-to-es@4.1.0:
     resolution: {integrity: sha512-SNwG909cSLo4vPyyPbU/VJkEc9WOXqu2ycBlfd1UCXLqk1IijcQktSBb2yRQ2UFPsDhpkaf+C1dtT3PkLK/yWA==}
-
-  overlayscrollbars@2.11.1:
-    resolution: {integrity: sha512-kogaNaBTIizRenQ2GTzt2cpkEH9B0nUBXseRxqQblH/YicJ3TaWuvn8E5TXPPfJCVoHYSgBYZzzva40kCERKHg==}
 
   p-limit@6.2.0:
     resolution: {integrity: sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==}
@@ -3585,8 +3579,6 @@ snapshots:
       oniguruma-parser: 0.5.4
       regex: 6.0.1
       regex-recursion: 6.0.2
-
-  overlayscrollbars@2.11.1: {}
 
   p-limit@6.2.0:
     dependencies:
