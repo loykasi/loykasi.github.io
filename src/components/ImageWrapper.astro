@@ -9,9 +9,11 @@ interface Props {
 }
 
 const { src, alt } = Astro.props;
-const files = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif,webp}');
+const files = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**');
 
 const className = Astro.props.class;
+
+if (!files[src]) throw new Error(`"${src}" does not exist in glob`);
 ---
 
-<Image src={files[src]()} alt={alt || ""} class:list={className} style="min-width: 1px; min-height: 1px;" />
+<Image src={files[src]()} alt={alt || ""} class:list={className} />

@@ -125,11 +125,11 @@ const { Content: AboutContent } = await render(aboutPost);
                     {project.imgs && project.imgs.length > 0 &&
                         <div class="w-full project-photos flex gap-x-4 overflow-x-scroll pb-2 snap-x snap-mandatory">
                         {project.imgs.map(img =>
-                            // <ImageWrapper
-                            //     src={img}
-                            //     class:list={["snap-start w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]}
-                            // />
-                            <img loading="lazy" src={img} alt={img || ""} class:list={["snap-start w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]} />
+                            <ImageWrapper
+                                src={img}
+                                class:list={["snap-start w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]}
+                            />
+                            // <img loading="lazy" src={img} alt={img || ""} class:list={["snap-start w-[calc(50%-0.5rem)] shrink-0 rounded-xl cursor-zoom-in"]} />
                         )}
                         </div>
                     }
