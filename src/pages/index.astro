@@ -108,11 +108,13 @@ const { Content: AboutContent } = await render(aboutPost);
             {group.projects.map(project =>
                 <li class="mb-3 ms-4 p-4 rounded-lg">
                     <div class="absolute w-4 h-4 bg-gray-500 rounded-full mt-3.5 -start-2 border border-white dark:border-gray-900 dark:bg-gray-700 ring-4 ring-white dark:ring-(--card-bg)"></div>
-                    <div class="mt-1.5 mb-3">
+                    <ul class="flex flex-wrap mt-1.5 mb-3 gap-2">
                     {project.techStack.map(tech =>
-                        <span class="bg-blue-100 text-blue-800 text-base font-medium me-2 px-2.5 py-1 rounded-md">{ tech }</span>
+                        <li class="bg-blue-100 text-blue-800 text-base font-medium px-2.5 py-1 rounded-md">
+                            { tech }
+                        </li>
                     )}
-                    </div>
+                    </ul>
                     <div class="mt-1.5 mb-3 text-lg font-bold text-gray-900 dark:text-white">
                         { project.name }
                     </div>
