@@ -76,27 +76,9 @@ const { Content: AboutContent } = await render(aboutPost);
             </div>
         </div>
     </div>
-
-    <div id="skills" class="bg-(--card-bg) rounded-2xl px-8 py-6 mt-8 shadow-md dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-900">
-        <h1 class="font-bold text-2xl mb-3 ps-4 border-s-4 border-blue-500 text-gray-900 dark:text-white/90">My Skills</h1>
-        {config.skills.length > 1 && config.skills.map(skill => 
-            <div class="flex flex-col items-start mt-8">
-                <h2 class="mb-3 font-bold text-xl text-gray-900 dark:text-white/70">{ skill.name }</h2>
-                <ul class="flex gap-4 flex-wrap">
-                {skill.technologies.map(value => 
-                    <li>
-                        <div class="px-4 py-2 text-sm font-bold rounded-md uppercase bg-blue-100 text-blue-800">
-                            { value }
-                        </div>
-                    </li>
-                )}
-                </ul>
-            </div>
-        )}
-    </div>
     
     <div id="projects" class="animation-appear bg-(--card-bg) rounded-2xl px-8 py-6 mt-8 shadow-md dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-900">
-        <h1 class="w-full text-2xl mb-8 font-bold ps-4 border-s-4 border-blue-500 text-gray-900 dark:text-white/90">RECENT PROJECTS</h1>
+        <h1 class="w-full text-2xl mb-8 font-bold ps-4 border-s-4 border-blue-500 text-gray-900 dark:text-white/90">PROJECTS</h1>
         
         <ol class="relative border-s-2 border-gray-400 dark:border-gray-700">
             {projectConfig.groups.map(group =>
@@ -120,7 +102,7 @@ const { Content: AboutContent } = await render(aboutPost);
                     </div>
                     <div class="mt-1.5 mb-3 text-base font-bold text-gray-900 dark:text-white">
                     {project.links.map(link =>
-                        <a href={link.url} class="me-2 text-blue-400 border-b border-dashed">{ link.name }</a>
+                        <a href={link.url} target="_blank" class="me-2 text-blue-400 border-b border-dashed">{ link.name }</a>
                     )}
                     </div>
                     <div class="mb-3 text-base font-normal text-gray-500 dark:text-gray-400">{ project.description }</div>
@@ -140,5 +122,23 @@ const { Content: AboutContent } = await render(aboutPost);
             </>
             )}
         </ol>
+    </div>
+
+    <div id="skills" class="bg-(--card-bg) rounded-2xl px-8 py-6 mt-8 shadow-md dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-900">
+        <h1 class="font-bold text-2xl mb-3 ps-4 border-s-4 border-blue-500 text-gray-900 dark:text-white/90">My Skills</h1>
+        {config.skills.length > 1 && config.skills.map(skill => 
+            <div class="flex flex-col items-start mt-8">
+                <h2 class="mb-3 font-bold text-xl text-gray-900 dark:text-white/70">{ skill.name }</h2>
+                <ul class="flex gap-4 flex-wrap">
+                {skill.technologies.map(value => 
+                    <li>
+                        <div class="px-4 py-2 text-sm font-bold rounded-md uppercase bg-blue-100 text-blue-800">
+                            { value }
+                        </div>
+                    </li>
+                )}
+                </ul>
+            </div>
+        )}
     </div>
 </Layout>

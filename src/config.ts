@@ -46,12 +46,16 @@ export const navbarConfig: NavbarConfig = {
 			url: "#about",
 		},
 		{
+			name: "Projects",
+			url: "#projects",
+		},
+		{
 			name: "Skills",
 			url: "#skills",
 		},
 		{
-			name: "Projects",
-			url: "#projects",
+			name: "Resume",
+			url: "/resume_chung_nghia.pdf",
 		},
 	],
 };
