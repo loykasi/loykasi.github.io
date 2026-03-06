@@ -24,8 +24,8 @@ import Footer from "../components/Footer.astro";
 			);
 		</script>
 	</head>
-	<body class="font-display bg-(--page-bg)">
-		<div id="particles-star" class="absolute -z-10 main-cover w-full bg-(--header-bg) pointer-events-none"></div>
+	<body class="font-main bg-(--page-bg)">
+		<!-- <div id="particles-star" class="absolute -z-10 main-cover w-full bg-(--header-bg) pointer-events-none"></div> -->
 		<div class="fixed top-0 left-0 right-0 bottom-0 pointer-events-none z-10 sm:w-[90%] sm:max-w-5xl mx-auto">
 			<Navbar />
 		</div>
@@ -112,9 +112,9 @@ function initThemeToggle() {
 		}
 	}
 
-	async function refreshParticle() {
-		initStarBackground();
-	}
+	// async function refreshParticle() {
+	// 	initStarBackground();
+	// }
 }
 
 async function initStarBackground() {
@@ -167,5 +167,5 @@ async function initStarBackground() {
 setup();
 initPhotoSwipe();
 initThemeToggle();
-initStarBackground();
+// initStarBackground();
 </script>

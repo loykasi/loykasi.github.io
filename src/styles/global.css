@@ -1,37 +1,74 @@
+@import "@fontsource-variable/roboto";
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-display: "Roboto", "sans-serif";
+  --font-main: "Roboto Variable", "sans-serif";
 }
 
 .md-content {
-    h1 {
-        @apply font-bold text-3xl mb-6;
-    }
+  h1 {
+    @apply font-bold text-3xl mb-6;
+  }
 
-    p {
-        @apply block text-lg md:text-xl leading-7 py-1
-    }
+  p {
+    @apply block text-lg md:text-xl leading-7 py-1;
+  }
 }
 
 .main-cover {
-    @apply min-h-[750px] h-dvh;
+  @apply min-h-[750px] h-dvh;
 }
 
 .navbar-mini {
-    @apply opacity-0 -translate-y-16
+  @apply opacity-0 -translate-y-16;
 }
 
 [data-color-scheme="dark"] {
-    color-scheme: dark;
+  color-scheme: dark;
 }
 
 [data-color-scheme="light"] {
-    color-scheme: light;
+  color-scheme: light;
 }
 
-/* img {
-  min-width: 1px;
-  min-height: 1px;
-} */
+/* =========================================
+Anchor
+========================================= */
+
+div.section {
+  position: relative;
+}
+
+div span[id] {
+  position: absolute;
+  top: -6rem;
+}
+
+/* =========================================
+Carousel
+========================================= */
+
+/* Target the scrollbar area */
+.carousel::-webkit-scrollbar {
+  width: 12px;
+  height: 6px;
+  display: block;
+}
+
+/* Target the track (the background) */
+.carousel::-webkit-scrollbar-track {
+  background: #dddddd;
+  border-radius: 0.25rem;
+}
+
+/* Target the thumb (the draggable bit) */
+.carousel::-webkit-scrollbar-thumb {
+  background: #a3a3a3;
+  border-radius: 0.25rem;
+}
+
+/* Optional: Handle on hover */
+.carousel::-webkit-scrollbar-thumb:hover {
+  background: #858585;
+}

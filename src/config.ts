@@ -18,7 +18,7 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:itch-io",
 		},
 		{
-			name: "Mail",
+			name: "hoangchungnghia06@gmail.com",
 			url: "mailto:hoangchungnghia06@gmail.com",
 			icon: "fa6-regular:envelope",
 		},
@@ -50,10 +50,6 @@ export const navbarConfig: NavbarConfig = {
 			url: "#projects",
 		},
 		{
-			name: "Skills",
-			url: "#skills",
-		},
-		{
 			name: "Resume",
 			url: "/resume_chung_nghia.pdf",
 		},
@@ -62,6 +58,42 @@ export const navbarConfig: NavbarConfig = {
 
 export const projectConfig: ProjectConfig = {
 	groups: [
+		{
+			year: 2026,
+			projects: [
+				{
+					name: "Simdyo",
+					techStack: ["Vue", "Nuxt", "ASP.NET Core", "PostgreSQL", "Unity"],
+					links: [
+						{
+							name: "Website",
+							url: "https://simdyo.com"
+						},
+						{
+							name: "itch.io",
+							url: "https://loykas.itch.io/simdyo"
+						},
+						{
+							name: "Web repository",
+							url: "https://github.com/loykasi/web-simdyo"
+						},
+						{
+							name: "Unity repository",
+							url: "https://github.com/loykasi/unity-simdyo"
+						},
+					],
+					description: "Scratch and Algodoo inspired Sandbox & Project Sharing Platform.",
+					imgs: [
+						"/src/assets/images/projects/simdyo-1.webp",
+						"/src/assets/images/projects/simdyo-2.webp",
+						"/src/assets/images/projects/simdyo-3.webp",
+						"/src/assets/images/projects/simdyo-4.webp",
+						"/src/assets/images/projects/simdyo-5.webp",
+						"/src/assets/images/projects/simdyo-6.webp",
+					]
+				},
+			]
+		},
 		{
 			year: 2025,
 			projects: [
